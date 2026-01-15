@@ -1,0 +1,10 @@
+Performance benchmarking measures system behavior under workload.
+Scalability testing evaluates performance with increasing resources.
+Efficiency analysis compares speedup to theoretical maximum.
+Amdahls Law describes theoretical speedup from parallelization.
+Parallel overhead includes communication and synchronization costs.
+Strong scaling measures speedup with fixed problem size.
+Weak scaling measures performance with scaled problem size.
+Communication patterns affect parallel algorithm efficiency.
+Load imbalance reduces parallel efficiency significantly.
+Parallel slowdown occurs when overhead exceeds benefits.

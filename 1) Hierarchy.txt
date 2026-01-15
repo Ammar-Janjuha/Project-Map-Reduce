@@ -1,0 +1,7 @@
+Map Reduce-project/
+├── Serial_Version.c
+├── Parallel_Version.c
+├── setup.sh
+├── run_serial.sh
+├── run_parallel.sh
+├── analyze_performance.sh

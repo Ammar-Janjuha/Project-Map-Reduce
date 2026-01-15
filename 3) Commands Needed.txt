@@ -1,0 +1,26 @@
+## Usage Instructions:
+
+1. **First, make all scripts executable:**
+```bash
+chmod +x setup.sh run_serial.sh run_parallel.sh analyze_performance.sh run_all.sh
+```
+
+2. **Run complete benchmark:**
+```bash
+./run_all.sh
+```
+
+3. **Or run individual components:**
+```bash
+# Setup only
+./setup.sh
+
+# Run serial only
+./run_serial.sh
+
+# Run parallel only
+./run_parallel.sh
+
+# Analyze performance only (after running both)
+./analyze_performance.sh
+

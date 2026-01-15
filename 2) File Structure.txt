@@ -1,0 +1,11 @@
+/
+├── serial_wordcount.c          (your serial C program)
+├── parallel_wordcount.c        (your parallel C program)
+├── setup.sh                    (master setup script)
+├── run_serial.sh               (runs serial version only)
+├── run_parallel.sh             (runs parallel version only)
+├── analyze_performance.sh      (analyzes both results)
+└── results/
+    ├── serial_results.txt      (serial output)
+    ├── parallel_results_N.txt  (parallel output for N processes)
+    └── performance_summary.txt (comparison results)

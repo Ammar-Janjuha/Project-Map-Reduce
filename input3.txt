@@ -1,0 +1,4 @@
+MapReduce is a programming model for processing large data sets.
+The model involves Map phase and Reduce phase.
+Hadoop uses MapReduce for big data processing.
+MapReduce helps in parallel processing of data.
