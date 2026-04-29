@@ -1,0 +1,60 @@
+1. MAIN START (All MPI processes)
+   │
+   ├── MPI_Init() - Initialize MPI environment
+   │
+   ├── MPI_Comm_rank() - Get process ID
+   │
+   ├── MPI_Comm_size() - Get total number of processes
+   │
+   ├── Root process (rank 0):
+   │     ├── Start timer (MPI_Wtime())
+   │     ├── Read command line arguments
+   │     └── Broadcast filenames to all processes
+   │
+   ├── All processes receive filenames via MPI_Bcast()
+   │
+   │========== MAP PHASE (Parallel Processing) ==========
+   │
+   ├── Each process processes its assigned files (round-robin):
+   │     │
+   │     └── FOR each file assigned to this process:
+   │          │
+   │          └── Call map_function() → similar to serial's count_words_in_file()
+   │               but returns local counts only
+   │
+   ├── Each process sorts its local results (qsort())
+   │
+   │========== REDUCE PHASE (Tree-based Reduction) ==========
+   │
+   ├── WHILE step < size: (Binary tree reduction)
+   │     │
+   │     ├── IF rank % (2*step) == 0: (Receiver process)
+   │     │     ├── Receive data from sender (rank + step)
+   │     │     ├── Merge received data with local data (merge_word_counts())
+   │     │     └── Continue to next step
+   │     │
+   │     ├── ELSE IF rank % (2*step) == step: (Sender process)
+   │     │     ├── Send local data to receiver (rank - step)
+   │     │     └── BREAK (process done)
+   │     │
+   │     └── step *= 2 (Double step for next level)
+   │
+   │========== OUTPUT PHASE (Only Rank 0) ==========
+   │
+   ├── IF rank == 0:
+   │     │
+   │     ├── Stop timer and calculate parallel time
+   │     │
+   │     ├── Print final results (top 20 words)
+   │     │
+   │     ├── Save results to file (parallel_results.txt)
+   │     │
+   │     ├── IF serial_results.txt exists:
+   │     │     ├── Read serial execution time
+   │     │     ├── Calculate speedup = serial_time / parallel_time
+   │     │     ├── Calculate efficiency = (speedup / size) * 100
+   │     │     └── Save performance analysis
+   │     │
+   │     └── Print performance metrics
+   │
+   └── MPI_Finalize() - Clean up MPI environment

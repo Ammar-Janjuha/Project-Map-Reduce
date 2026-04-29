@@ -1,0 +1,31 @@
+1. MAIN START
+   │
+   ├── Check command line arguments
+   │
+   ├── Start timer (clock())
+   │
+   ├── Initialize WordCount array and counters
+   │
+   ├── FOR each input file:
+   │     │
+   │     └── Call count_words_in_file()
+   │          │
+   │          ├── Open file
+   │          │
+   │          ├── WHILE read word from file:
+   │          │     │
+   │          │     ├── Clean word (remove punctuation)
+   │          │     │
+   │          │     ├── Convert to lowercase (to_lower_case())
+   │          │     │
+   │          │     └── Add to WordCount array or increment existing
+   │          │
+   │          └── Return word count for this file
+   │
+   ├── Sort all results (qsort() with compare_word_counts())
+   │
+   ├── Stop timer and calculate execution time
+   │
+   ├── Print results (top 20 words)
+   │
+   └── Save results to file (serial_results.txt)
